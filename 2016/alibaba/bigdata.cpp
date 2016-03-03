@@ -9,6 +9,7 @@
 using namespace std;
 
 const int MAXL = 10000000;
+const float CLOCK_PER_MILLSECOND = 1000.0;
 const string CHAR="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
 struct Stu{
@@ -84,17 +85,30 @@ void insert_test(Map &m,HashMap &hashmap,int times)
 void search_test(Map &m,HashMap &hashm,const string &key)
 {
 	clock_t start,end;
-	int CLOCK_PER_SECOND = 1000000;
-	start=clock();
-	if(m[key]!=0){
-		end=clock();
-		cout<<"Map found,search time:"<<(end-start)/CLOCK_PER_SECOND<<endl;
+    start=clock();
+    if(m[key]!=0){
+        end = clock();
+        cout<<"Map found,search time:"<<(end-start)/CLOCK_PER_MILLSECOND<<endl;
+    }
+    start = clock();
+    if(hashm[key]!=0){
+        end = clock();
+		cout<<"HashMap found,search time:"<<(end-start)/CLOCK_PER_MILLSECOND<<endl;
 	}
-	start=clock();
-	if(hashm[key]!=0){
-		end=clock();
-		cout<<"HashMap found,search time:"<<(end-start)/CLOCK_PER_SECOND<<endl;
-	}
+}
+
+void foreach_test(Map &m,HashMap &hash)
+{
+    clock_t s,e;
+    s = clock();
+    for(auto it=m.begin();it!=m.end();++it);
+    e = clock();
+	cout<<"Map,foreach time:"<<(e-s)/CLOCK_PER_MILLSECOND<<endl;
+
+    s=clock();
+    for(auto it=hash.begin();it!=hash.end();++it);
+    e=clock();
+	cout<<"HashMap,foreach time:"<<(e-s)/CLOCK_PER_MILLSECOND<<endl;
 }
 int main(int argc, char const *argv[])
 {
@@ -102,6 +116,6 @@ int main(int argc, char const *argv[])
 	HashMap hashmap;
 	insert_test(m,hashmap,MAXL);
 	search_test(m,hashmap,"ac");
-
+    foreach_test(m,hashmap);
 	return 0;
 }

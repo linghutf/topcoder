@@ -1,3 +1,9 @@
+# UnIgnore all with extensions
+! *.*
+
+# Java Compiled files
+*.class
+
 # Compiled Object files
 *.slo
 *.lo

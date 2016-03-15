@@ -1,3 +1,18 @@
+# UnIgnore all with extensions
+#!/interview/*.*
+#!/2014/tencent/*.*
+#!/2015/neteasy/*.*
+#!/2016/alibaba/*.*
+#!/2016/beautifulOfCoding/*.*
+#!/2016/sougou/*.*
+#!/2016/xiecheng/*.*
+*
+!/**/
+!*.*
+
+# Java Compiled files
+*.class
+
 # Compiled Object files
 *.slo
 *.lo

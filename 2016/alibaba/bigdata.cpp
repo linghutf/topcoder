@@ -84,6 +84,7 @@ void insert_test(Map &m,HashMap &hashmap,int times)
 */
 void search_test(Map &m,HashMap &hashm,const string &key)
 {
+<<<<<<< Updated upstream
 	clock_t start,end;
     start=clock();
     if(m[key]!=0){
@@ -94,6 +95,18 @@ void search_test(Map &m,HashMap &hashm,const string &key)
     if(hashm[key]!=0){
         end = clock();
 		cout<<"HashMap found,search time:"<<(end-start)/CLOCK_PER_MILLSECOND<<endl;
+=======
+	time_t start,end;
+	start=clock();
+	if(m[key]!=0){
+		end=clock();
+		cout<<"Map found,search time:"<<(end-start)/CLOCK_PER_SECOND<<endl;
+	}
+	start=clock();
+	if(hashm[key]!=0){
+		end=clock();
+		cout<<"HashMap found,search time:"<<(end-start)/CLOCK_PER_SECOND<<endl;
+>>>>>>> Stashed changes
 	}
 }
 

@@ -1,6 +1,11 @@
+/**
+ * 逆序打印链表:递归，栈
+ *
+ * 反转单链表
+ */
 #include <iostream>
 #include <stack>
-#include <list>
+//#include <list>
 
 using namespace std;
 
@@ -61,14 +66,44 @@ void destroy(List *head)
         delete q;
     }
 }
+
+//反转单链表
+List *ReverseList(List *pHead)
+{
+    if(pHead==NULL||pHead->next==NULL) return pHead;
+    List *p = pHead->next,*q,*tmp;
+    q=p->next;
+    tmp = q->next;
+    q->next=p;
+    p->next=NULL;
+    p=q;
+    q=tmp;
+    while(q!=NULL){
+        //q=p->next;//store next addr
+        tmp = q->next;
+        q->next = p;//reverse
+        p=q;//p->next已经改变,指向以前的p
+        q=tmp;
+    }
+
+    pHead->next=p;//add to head
+    return pHead;
+}
+
 int main(int argc, char *argv[])
 {
     List head;
     createList(head);
 
+    cout<<"逆序:";
     print(head.next);
     cout<<endl;
     printByStack(head.next);
+
+    cout<<"顺序:";
+    ReverseList(&head);
+    print(head.next);
+    cout<<endl;
 
     destroy(&head);
     return 0;

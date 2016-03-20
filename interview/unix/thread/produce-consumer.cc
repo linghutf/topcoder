@@ -6,21 +6,35 @@
  * P(V)操作等待V(P)信号量
  * 使用一个mutex会导致死锁，一个在等待而没有释放锁，
  * 另一个得不到锁无法运行
+ * 主线程如果退出，子线程还没有被销毁，产生异常
+ * join()实现主线程阻塞，知道子线程运行完成
+ *
+ * 2016-03-19更正
+ * 可以重服枷锁，
+ * 所以在加锁后判断是否需要等待
+ * 只需要一个互斥量和2个信号量
+ * 2016-03-20更新观念
+ * 条件变量没有被满足时，线程将阻塞,并释放互斥量，
+ * 只有wait结束后，才能重新获得互斥量
+ * 所以先加锁，然后查看条件变量是否被满足
  */
 
 #include <iostream>
+#include <iomanip>
 #include <thread>
 #include <mutex>
 #include <condition_variable>
 #include <chrono>
 //#include <vector>
 
+#include <signal.h>
+
 using namespace std;
 
 int a = 19;//不能使用局部变量传递到到线程函数中，默认会复制一份，即使是使用引用型参数
 
 
-std::mutex pmtx,vmtx;
+std::mutex mtx;
 std::condition_variable_any pcv,vcv;//PV信号量
 
 const int UP =10;
@@ -42,57 +56,55 @@ struct Observer{
 
     static void doProduce(int p){
         while(true){
+            mtx.lock();
             if(a>UP){
-                //cout<<"P wait..."<<endl;
-                pcv.wait(vmtx);//已经锁住
-                //cout<<"P begin..."<<endl;
+                vcv.wait(mtx);//阻塞，释放互斥量
             }
-            //std::lock(bufmtx);
-            //mtx.unlock();
-            pmtx.lock();
-            //mtx.unlock();
-            //if(mtx.try_lock()){
-            cout<<"原有:"<<a;
+            //重新获得互斥量
+            cout<<"原有:"<<setw(3)<<a;
             produce(a,p);
-            std::cout<<"生产了:"<<p<<",总数:"<<a<<endl;
-            pmtx.unlock();
-            vcv.notify_all();
+            std::cout<<"生产了:"<<setw(3)<<p<<",总数:"<<setw(3)<<a<<",id:"<<setw(20)<<std::this_thread::get_id()<<endl;
+            mtx.unlock();
+            pcv.notify_all();
         }
     }
 
     static void doComsume(int c){
         while(true){
-
+            mtx.lock();
             if(a<UP){
-                //cout<<"V wait..."<<endl;
-                vcv.wait(pmtx);
-                //mtx.unlock();
-                //cout<<"V again..."<<endl;
+                pcv.wait(mtx);
             }
-            //cout<<"come here..."<<endl;
-            //mtx.unlock();
-            //std::lock(bufmtx);
-            vmtx.lock();
-            //if(mtx.try_lock()){
-            std::cout<<"原有:"<<a;
+            std::cout<<"原有:"<<setw(3)<<a;
             consume(a,c);
-            std::cout<<"消费了:"<<c<<",总数:"<<a<<endl;
-            vmtx.unlock();
-            pcv.notify_all();
-            //}
+            std::cout<<"消费了:"<<setw(3)<<c<<",总数:"<<setw(3)<<a<<",id:"<<setw(20)<<std::this_thread::get_id()<<endl;
+            mtx.unlock();
+            vcv.notify_all();
         }
     }
 };
+
+static void sig_stop(int signo)
+{
+    if(signo == SIGUSR2){
+        exit(EXIT_SUCCESS);
+    }
+}
 
 int main(int argc, char *argv[])
 {
     //Observer obs;
     int p = 4,c=5;
     //std::vector<std::thread> v;
-    std::thread ths[2];
+    std::thread ths[3];
     ths[0]=std::thread(std::bind(Observer::doProduce,p));
     ths[1]=std::thread(std::bind(Observer::doComsume,c));
-    //std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    ths[2]=std::thread(std::bind(Observer::doComsume,c));
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+    //listen signal
+    signal(SIGUSR2,sig_stop);
+
     for(auto &t:ths)
         t.join();
     return 0;

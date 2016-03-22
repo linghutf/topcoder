@@ -23,7 +23,7 @@ void GetNext(int next[],const char *s)
 				next[j]=next[k];
 			else
 				next[j]=k;
-		}else{
+		}else{//mark return back
 			k = next[k];
 		}
 	}
@@ -56,7 +56,7 @@ int Kmp(const char *s,const char *t)
 			j=next[j];
 		}
 	}
-
+    delete[] next;
 	return times;
 }
 
@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
 	//testcase();
 	int n;
 	cin>>n;
-	
+
 	string s[20],t[20];
 	//string ss(1000000),tt(10000);
 	if(n<=20 && n>=1){

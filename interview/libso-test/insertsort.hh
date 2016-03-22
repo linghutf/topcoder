@@ -1,4 +1,6 @@
-#pragma once
+#ifndef INSERTSORT_HH_
+#define INSERTSORT_HH_
+//#pragma once
 
 #include <algorithm>
 //#include <concept>
@@ -31,3 +33,4 @@ template<typename T> void InsertSort(T &array,int low,int high)
     }
 
 }
+#endif

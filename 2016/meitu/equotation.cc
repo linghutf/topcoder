@@ -1,12 +1,16 @@
 /**
+ * 多线程,并行处理6元一次方程
  * 计算 -15x1+28x2+45x3+5x4+17x5-39x6 = 0 的解的个数，
  * 其中xi∈[-100,0)U(0,100],i∈[1,6]
+ *
+ * 写文件时会有竞争条件，需要加锁，或者使用pwrite原子操作
  */
 
 #include <iostream>
 #include <algorithm>
 #include <parallel/numeric>
 
+#include <mutex>
 #include <thread>
 #include <vector>
 
@@ -21,6 +25,7 @@ const int k[]={-15,28,45,5,17,-39};
 const int UP = 100;
 
 static FILE *fp = fopen("result.dat","w");
+std::mutex mtx;
 
 bool isNotZero(int a[],int len)
 {
@@ -40,8 +45,9 @@ bool isCond1(int a[],int len)
 
 void write(int a[],int len)
 {
-    //char buf[30];
+    mtx.lock();
     fprintf(fp,"%d %d %d %d %d %d\n",a[0],a[1],a[2],a[3],a[4],a[5]);
+    mtx.unlock();
 }
 
 void solve(int begin,int end,int &cnt)

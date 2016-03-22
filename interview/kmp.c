@@ -24,7 +24,7 @@
  *     ...
  */
 //求模式串的next数组
-void GetNext(char *str,int *next)
+void GetNext(const char *str,int *next)
 {
     if(str==NULL||next==NULL)
         return;
@@ -41,42 +41,51 @@ void GetNext(char *str,int *next)
                 next[j]=next[k];
 
         }else{//回溯到上一个j的位置
-            //if(j==0) j=flag;
             k=next[k];
         }
     }
 }
 
-int search(char *sub,char *str)
+int search(const char *sub,const char *str)
 {
     int pos = -1;
-    if(str==NULL||sub==NULL)
+    if(str==NULL)
         return pos;
+    if(sub==NULL)
+        return 0;
     int slen = strlen(str);
     int tlen = strlen(sub);
-
-    int *next = (int*)malloc(sizeof(int)*(tlen+1));
+    if(tlen==0) return 0;
+    int *next = (int*)malloc(sizeof(int)*tlen);
+    if(next==NULL){
+        printf("malloc ERROR.\n");
+        return pos;
+    }
+    //next作为匹配失败时的回退位置
     GetNext(sub,next);
+    /*
     printf("next:");
     for(int i=0;i<tlen;++i)
         printf("%3d",next[i]);
     printf("\n");
-    //匹配
+    */
+    //开始匹配
     int i=0,j=0;
-    while(i<slen && j<tlen){
-        if(j==0||str[i]==sub[j]){
+    while(i<slen){
+        if(j==-1||str[i]==sub[j]){//j=-1回到起始位置
             i++;
             j++;
+            if(j==tlen)//found
+                break;
         }else{//匹配失败，移动sub
-            j = next[j];//next[0]=0,表示i,j同时前移
+            j = next[j];//next[0]=-1,表示i,j同时前移
         }
 
     }
-
+    free(next);
     if(j==tlen){//完成一次完全匹配
         pos = i-j;
     }
-    free(next);
     return pos;
 }
 
@@ -89,13 +98,5 @@ int main(int argc, char *argv[])
     char *str = argv[1];
     char *sub = argv[2];
     printf("%d\n",search(sub,str));
-    /*
-    int len = strlen(sub);//next[0]空着
-    int *next =(int*)malloc(sizeof(int)*len);
-    GetNext(sub,next);
-    for(int i=0;i<len;++i)
-        printf("%3d",next[i]);
-    printf("\n");
-    */
     return 0;
 }

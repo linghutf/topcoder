@@ -1,4 +1,6 @@
-#pragma once
+#ifndef QSORT_HH_
+#define QSORT_HH_
+//#pragma once
 
 #include <algorithm>
 
@@ -82,4 +84,4 @@ template<typename T> void Qsort(T &array,int len)
 {
     QuickSort(array,0,len-1);
 }
-
+#endif

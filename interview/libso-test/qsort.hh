@@ -3,6 +3,8 @@
 //#pragma once
 
 #include <algorithm>
+//#include <iostream>
+//#include <iomanip>
 
 #include "insertsort.hh"
 
@@ -76,6 +78,9 @@ template<typename T> void QuickSort(T &array,int low,int high)
         return;
     }
     int index = Partition(array,low,high);
+    //std::for_each(&array+low,&array+high+1,[](T &n){std::cout<<std::setw(3)<<n;});
+    //std::cout<<std::endl;
+
     QuickSort(array,low,index-1);
     QuickSort(array,index+1,high);
 }

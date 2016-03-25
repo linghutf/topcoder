@@ -91,8 +91,17 @@ void testcase()
 
 }
 
+void testcase2()
+{
+    int a2[]={19,15,12,18,21,36,45,10};
+    int len2 = sizeof(a2)/sizeof(a2[0]);
+    Qsort(a2,len2);
+}
+
 int main(int argc, char *argv[])
 {
     testcase();
+    testcase2();
+
     return 0;
 }

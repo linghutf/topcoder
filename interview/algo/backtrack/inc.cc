@@ -1,4 +1,5 @@
-#include <cstdio>
+//编译期间错误
+#include <stdio.h>
 
 int main(int argc, char *argv[])
 {

@@ -9,6 +9,7 @@
 
 using namespace std;
 
+#define NERVER_APPEAR (1<<31) //从未出现过的数字
 const int STEPS = 4;//总共步数
 std::bitset<STEPS> used;//是否使用
 int solution[STEPS];//解空间
@@ -19,7 +20,7 @@ void backtrack(int nums[],int len,int step)
         std::for_each(solution,solution+STEPS,[](int n){cout<<n<<'\t';});
         cout<<endl;
     }else{
-        int last_element;
+        int last_element = NERVER_APPEAR;
         for(int i=0;i<len;++i){//对每个nums中元素进行尝试
             if(used[i]) continue;//该位置元素已被使用
             if(last_element == nums[i]) continue;//上一个位置已使用

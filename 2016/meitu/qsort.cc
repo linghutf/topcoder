@@ -27,6 +27,9 @@ void quicksort(int a[],int low,int high)
 {
 	if(low>=high) return;
 	int index = partition(a,low,high);
+    for_each(a+low,a+high+1,[](int n){cout<<n<<'\t';});
+    cout<<endl;
+
 	quicksort(a,low,index-1);
 	quicksort(a,index+1,high);
 }
@@ -43,6 +46,15 @@ void generate_n(int a[],int nums)
 		a[i]=rand()%100;
 	}
 }
+
+void testcase()
+{
+    cout<<"每趟排序:"<<endl;
+    int a[]={19,15,12,18,21,36,45,10};
+    int len = sizeof(a)/sizeof(a[0]);
+    Qsort(a,len);
+    cout<<endl;
+}
 int main(int argc, char const *argv[])
 {
 	int len = 12;
@@ -55,5 +67,6 @@ int main(int argc, char const *argv[])
 	for_each(a,a+len,[](int n){cout<<n<<'\t';});
 	cout<<endl;
 
+    testcase();
 	return 0;
 }

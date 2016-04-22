@@ -1,3 +1,7 @@
+/**
+ * 投石子游戏递归算法
+ * 未通过
+ */
 #include <iostream>
 #include <algorithm>
 

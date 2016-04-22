@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <alloca.h>
 /**
  * 找到返回位置
  * 未找到返回-1
@@ -24,6 +24,15 @@
  *     ...
  */
 //求模式串的next数组
+
+//没有使用next[j]=next[k]时，
+//当前位置的值 由最长相等的前后缀长度决定
+// 0 1 2 3 4 5 6 7 8
+// x y x y y x x y x
+//-1 0 0 1(x=x)
+//-1 0 0 1 2(xy=xy)
+//-1 0 0 1 2 0 1 1 2
+
 void GetNext(const char *str,int *next)
 {
     if(str==NULL||next==NULL)
@@ -56,7 +65,8 @@ int search(const char *sub,const char *str)
     int slen = strlen(str);
     int tlen = strlen(sub);
     if(tlen==0) return 0;
-    int *next = (int*)malloc(sizeof(int)*tlen);
+    //int *next = (int*)malloc(sizeof(int)*tlen);
+    int *next = (int*)alloca(sizeof(int)*tlen);
     if(next==NULL){
         printf("malloc ERROR.\n");
         return pos;
@@ -82,7 +92,7 @@ int search(const char *sub,const char *str)
         }
 
     }
-    free(next);
+    //free(next);
     if(j==tlen){//完成一次完全匹配
         pos = i-j;
     }

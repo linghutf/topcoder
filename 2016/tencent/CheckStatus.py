@@ -2,6 +2,10 @@
 # encoding: utf-8
 
 # 面试状态查询
+# person-file:
+# 姓名 身份证后4位   手机号
+# 张三 1234          13112345678
+# usage: python file.py person-file
 
 import requests
 import threading
@@ -91,15 +95,13 @@ class thread(threading.Thread):
 
 if __name__ == '__main__':
     t = 60 # 60s
-    '''
-    if len(sys.argv)<3:
-        print('usage:%s idcard phone.' %(sys.argv[0]))
+
+    if len(sys.argv)<2:
+        print('usage:%s persons-file.' %(sys.argv[0]))
         sys.exit(1)
-    idcard = sys.argv[1]
-    phone = sys.argv[2]
-    '''
+    filename = sys.argv[1]
     #读取用户列表
-    persons = read_config('person.list')
+    persons = read_config(filename)
     # 多线程运行
     ths = []
     for i in persons:

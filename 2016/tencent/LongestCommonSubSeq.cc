@@ -32,9 +32,11 @@ void InitMatrix(Matrix &mat,int rows,int cols)
     }
 }
 
-void PrintMat(Matrix &mat,int rows,int cols)
+void PrintMat(const Matrix &mat)
 {
-    int u,v;
+    int rows = mat.size();
+    int cols = mat[0].size();
+
     for(u=0;u<rows;++u)
     {
         for(v=0;v<cols;++v){
@@ -76,15 +78,6 @@ int LongestCommonSubSequence(const std::string &s,const std::string &t,std::stri
     //0表示left(左)
     Matrix flags;
     InitMatrix(flags,m+1,n+1);
-/*
-    int **mat = new int*[m+1];
-    if(mat==NULL) return -1;
-    for(int i=0;i<=m;++i)
-    {
-        mat[i]=new int[n+1];
-        if(mat[i]==NULL) return -1;
-    }
-*/
     //计算
     int i,j;
     for(i=1;i<=m;++i){
@@ -111,17 +104,7 @@ int LongestCommonSubSequence(const std::string &s,const std::string &t,std::stri
     SubSequence(s,flags,m+1,n+1,result);
 
     /*debug info.*/
-    PrintMat(mat,m+1,n+1);
-    //PrintMat(flags,m+1,n+1);
-/*
-    int len = mat[m][n];
-
-    for(i=0;i<=m;++i)
-        delete[] (mat[i]);
-    delete[] mat;
-
-    return len;
-*/
+    PrintMat(mat);
     return mat[m][n];
 }
 

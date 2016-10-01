@@ -39,9 +39,13 @@ class Person(object):
         post_data = {'type':'query_result','idcard':'','phone':''}
         post_data['idcard'] = self.idcard
         post_data['phone'] = self.phone
-        r = requests.post(url,data=post_data)
-        r.encoding = 'gb2313'
+        user_agent = {"User-Agent":"Mozilla/5.0 (iPhone; CPU iPhone OS 5_1 like Mac OS X) AppleWebKit/534.46 (KHTML, like Gecko) Mobile/9B176 MicroMessenger/4.3.2"}
+
+        r = requests.request('POST',url=url,headers=user_agent,data=post_data)
+
+        #r.encoding = 'gb2313' #微信已经改为utf-8编码
         soup = bs(r.text,'lxml')
+        print soup.get_text()
         node = soup.select('.school')[0]# .query-result')
         self.setStatus(node.get_text())
 

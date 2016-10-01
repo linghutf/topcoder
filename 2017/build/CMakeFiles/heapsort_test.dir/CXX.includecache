@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/linghutf/topcoder/2017/hs.cc
+iostream
+-
+iomanip
+-
+algorithm
+-
+vector
+-
+stdlib.h
+-
+time.h
+-
+boost/foreach.hpp
+-
+

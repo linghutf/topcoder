@@ -1,0 +1,1 @@
+/usr/bin/cc     CMakeFiles/endian.dir/endian.c.o  -o endian -rdynamic 

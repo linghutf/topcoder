@@ -1,0 +1,1 @@
+/usr/bin/c++   -std=c++11   CMakeFiles/heapsort_test.dir/hs.cc.o  -o heapsort_test -rdynamic 

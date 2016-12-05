@@ -1,2 +1,0 @@
-/home/linghutf/topcoder/build/CMakeFiles/edit_cache.dir
-/home/linghutf/topcoder/build/CMakeFiles/rebuild_cache.dir

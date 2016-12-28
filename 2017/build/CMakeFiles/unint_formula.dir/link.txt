@@ -1,1 +1,0 @@
-/usr/bin/c++   -std=c++11   CMakeFiles/unint_formula.dir/uint_test.cc.o  -o unint_formula -rdynamic 

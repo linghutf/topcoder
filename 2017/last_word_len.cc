@@ -1,53 +1,44 @@
-#include <stdio.h>
-
+#include <iostream>
+#include <algorithm>
+#include <cctype>
 #include <vector>
 #include <string>
 
-int len_last_word(const char * str)
+int len_of_last_word(const char * str)
 {
-    int len = 0;
-    if(str==NULL) return len;
-    int cnt = 0;
-    char * p = (char*)str;
-
+    char * p =(char*)str;
+    char * q =(char*)str;
     while(*p!='\0')
     {
-        if(*p==' ')
+        if(ispunct(*p)||isspace(*p)) // 单词分隔
         {
-            ++p;
-            while(*p!='\0' && *p!=' ')
-            {
-                ++p;
-                cnt++;
-            }
-            if(*p=='\0') return cnt;
-            else
-                cnt = 0;
-        }else{
-            ++p;
-            ++cnt;
+            q = p+1;
         }
+        ++p;
     }
-    return cnt;
+    return p-q;
 }
 
-void testcase()
+
+void test()
 {
     std::vector<std::string> strs={
-        "",
-        "the great wall",
-        "world",
-        "we are  you  can"
+        " I lowe China.",
+        "I hate this",
+        "Beijing",
+        ""
     };
 
-    for(int i=0;i<strs.size();++i)
+    //std::vector<std::string>::iterator it = strs.begin();
+    for(auto it=strs.begin();it!=strs.end();++it)
     {
-        printf("%s:%4d\n",strs[i].c_str(),len_last_word(strs[i].c_str()));
+        std::cout<<*it<<":"<<len_of_last_word(it->c_str())<<std::endl;
     }
 }
 
 int main(int argc, char *argv[])
 {
-    testcase();
+    test();
+
     return 0;
 }

@@ -1,6 +1,0 @@
-/home/linghutf/topcoder/2017/build/CMakeFiles/rebuild_cache.dir
-/home/linghutf/topcoder/2017/build/CMakeFiles/heapsort.dir
-/home/linghutf/topcoder/2017/build/CMakeFiles/edit_cache.dir
-/home/linghutf/topcoder/2017/build/CMakeFiles/endian.dir
-/home/linghutf/topcoder/2017/build/CMakeFiles/heapsort_test.dir
-/home/linghutf/topcoder/2017/build/CMakeFiles/uint_formula.dir

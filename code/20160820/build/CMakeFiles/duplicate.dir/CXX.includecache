@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/linghutf/20160820/duplicate.cc
+iostream
+-
+algorithm
+-
+vector
+-
+time.h
+-
+stdlib.h
+-
+iterator
+-
+boost/foreach.hpp
+-
+

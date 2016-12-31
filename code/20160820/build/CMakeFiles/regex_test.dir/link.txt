@@ -1,0 +1,1 @@
+g++      CMakeFiles/regex_test.dir/regex_test.cc.o  -o regex_test -rdynamic 

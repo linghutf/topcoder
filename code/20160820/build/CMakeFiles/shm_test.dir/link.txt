@@ -1,0 +1,1 @@
+g++      CMakeFiles/shm_test.dir/shm_test.cc.o  -o shm_test -rdynamic -lrt -lpthread 

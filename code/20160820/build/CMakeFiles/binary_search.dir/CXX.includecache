@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/linghutf/20160820/bin_search.h
+
+/home/linghutf/20160820/binary_search.cc
+stdio.h
+-
+stdlib.h
+-
+assert.h
+-
+algorithm
+-
+boost/foreach.hpp
+-
+bin_search.h
+/home/linghutf/20160820/bin_search.h
+

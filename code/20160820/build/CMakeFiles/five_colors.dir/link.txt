@@ -1,0 +1,1 @@
+g++      CMakeFiles/five_colors.dir/five_color_shortest_dis.cc.o  -o five_colors -rdynamic 

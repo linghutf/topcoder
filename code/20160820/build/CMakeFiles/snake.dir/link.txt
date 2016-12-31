@@ -1,0 +1,1 @@
+g++      CMakeFiles/snake.dir/snake.cc.o  -o snake -rdynamic 

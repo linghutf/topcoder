@@ -1,0 +1,1 @@
+g++      CMakeFiles/mysort.dir/sort.cc.o  -o mysort -rdynamic 

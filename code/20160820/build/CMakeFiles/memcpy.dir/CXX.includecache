@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/linghutf/20160820/memcpy.cc
+string.h
+-
+iostream
+-
+iomanip
+-
+boost/foreach.hpp
+-
+boost/function.hpp
+-
+boost/bind.hpp
+-
+

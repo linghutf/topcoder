@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/linghutf/20160820/smart_ptr.hh
+mutex
+-
+
+/home/linghutf/20160820/test_sp.cc
+iostream
+-
+thread
+-
+smart_ptr.hh
+/home/linghutf/20160820/smart_ptr.hh
+

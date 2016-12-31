@@ -1,0 +1,1 @@
+g++      CMakeFiles/reverse_word.dir/str_arr.cc.o  -o reverse_word -rdynamic 

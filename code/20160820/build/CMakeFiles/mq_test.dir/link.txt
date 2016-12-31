@@ -1,0 +1,1 @@
+g++      CMakeFiles/mq_test.dir/mq_test.cc.o  -o mq_test -rdynamic -lrt -lpthread 

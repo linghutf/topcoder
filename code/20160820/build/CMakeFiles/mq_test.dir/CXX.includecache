@@ -1,0 +1,32 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/linghutf/20160820/mq_test.cc
+fcntl.h
+-
+mqueue.h
+-
+unistd.h
+-
+sys/stat.h
+-
+sys/types.h
+-
+sys/wait.h
+-
+pthread.h
+-
+errno.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+

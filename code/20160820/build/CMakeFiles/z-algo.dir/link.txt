@@ -1,0 +1,1 @@
+g++      CMakeFiles/z-algo.dir/z-algo.cc.o  -o z-algo -rdynamic 

@@ -1,0 +1,17 @@
+syntax="proto3";
+
+// TODO(linghutf): Describe this message.
+message Size {
+    int32 length = 1;
+    // Next available id: 1
+}
+
+// TODO(linghutf): Describe this message.
+message DyMsg {
+    string topic = 1;
+    string tag = 2;
+    string key = 3;
+    string body = 4;
+    string timestamp = 5;
+    // Next available id: 1
+}

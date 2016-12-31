@@ -1,0 +1,1 @@
+g++      CMakeFiles/stack_heap_test.dir/stack_heap_diff.cc.o  -o stack_heap_test -rdynamic 

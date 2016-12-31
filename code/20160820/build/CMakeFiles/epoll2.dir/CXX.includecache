@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/linghutf/20160820/epoll_test2.cc
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+stdint.h
+-
+errno.h
+-
+unistd.h
+-
+fcntl.h
+-
+sys/types.h
+-
+arpa/inet.h
+-
+netinet/in.h
+-
+sys/socket.h
+-
+sys/epoll.h
+-
+sys/wait.h
+-
+

@@ -1,0 +1,1 @@
+/usr/bin/cc     CMakeFiles/swapc.dir/swap.c.o  -o swapc -rdynamic 

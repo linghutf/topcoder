@@ -1,0 +1,1 @@
+g++      CMakeFiles/touzi.dir/touzi.cc.o  -o touzi -rdynamic 

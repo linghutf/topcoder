@@ -1,0 +1,1 @@
+g++      CMakeFiles/fifa.dir/fifa.cc.o  -o fifa -rdynamic 

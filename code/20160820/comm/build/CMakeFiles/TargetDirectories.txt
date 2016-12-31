@@ -1,0 +1,3 @@
+/home/linghutf/20160820/comm/build/CMakeFiles/edit_cache.dir
+/home/linghutf/20160820/comm/build/CMakeFiles/rebuild_cache.dir
+/home/linghutf/20160820/comm/build/CMakeFiles/netty_asi.dir

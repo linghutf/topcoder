@@ -1,0 +1,1 @@
+g++      CMakeFiles/erase_vec.dir/erase_vec.cc.o  -o erase_vec -rdynamic 

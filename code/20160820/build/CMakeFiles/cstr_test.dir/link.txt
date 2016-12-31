@@ -1,0 +1,1 @@
+/usr/bin/cc     CMakeFiles/cstr_test.dir/cstr_test.c.o  -o cstr_test -rdynamic 

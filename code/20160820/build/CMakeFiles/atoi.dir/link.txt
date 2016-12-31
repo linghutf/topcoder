@@ -1,0 +1,1 @@
+g++      CMakeFiles/atoi.dir/atoi.cc.o  -o atoi -rdynamic 

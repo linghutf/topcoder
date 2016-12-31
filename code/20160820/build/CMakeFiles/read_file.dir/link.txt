@@ -1,0 +1,1 @@
+/usr/bin/cc     CMakeFiles/read_file.dir/read_file.c.o  -o read_file -rdynamic 

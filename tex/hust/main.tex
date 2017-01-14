@@ -1,0 +1,90 @@
+\documentclass[format=draft,degree=master,language=chinese]{hustthesis}
+\usepackage{algorithmic}
+\usepackage{float}
+
+\stuno{M201572702}
+\schoolcode{10487}
+\title{基于全闪存盘阵的数据安全删除研究}{Research of Secure Deletion based on
+  Solid-State Disk Array}
+\author{徐德传}{Dechuan Xu}
+\major{计算机技术}{Computer Technology}
+\supervisor{曾令仿$\hspace{1em}$副教授}{A/Prof. Lingfang Zeng}
+\date{2017}{5}{27}
+
+\zhabstract{
+    全闪存盘阵是一种全新的存储架构，由于其读写性能优越，I/O时延小，是用于取代目前阵列使用的机械硬盘的首选，
+将会是未来数据中心的主流物理存储设备。但由于闪存盘硬件的特性，其上存储的数据在被删除后，数据依然存在其物理页上
+，有可能造成数据泄露。基于全闪存盘阵的数据安全删除是存储研究领域积极研究的课题之一，但目前尚无很好的解决方案。
+
+
+    针对固态盘的异地更新导致数据可能泄露的问题，本研究在全闪存盘阵列的基础上，提出一种通用性的方案，其根据原始数据
+及其哈希信息经过非对称加密、伽罗瓦群运算等步骤，产生冗余加密数据单元。在擦除密钥盘上的哈希信息，或者是
+擦除一定数量的加密数据后，其对应的原始数据再也无法恢复出来，从而保证数据的安全。
+
+
+    在依据研究方案实现的仿真实验上，通过对仿真系统的安全删除等功能的验证，以及对系统的数据处理带宽、I/O时延、
+系统负载、数据冗余率等方面的详细测试, 结果表明，在擦除了哈希信息等数据后，原始数据无法恢复，达到了安
+全删除的目的；系统的数据处理等性能表现正常，满足可靠性和可用性的要求。}
+  %%删除原始哈希信息后，保证原始数据的安全性的方案.
+  %本文主要提出了一种针对全闪存盘的安全删除方法，通过对原始数据及其哈希信息在群域矩阵非对称加密运算后，
+%据，在物理意义上擦除原始数据哈希信息，也即是密钥数据，达到数据安全的目的。}
+\zhkeywords{固态盘，阵列，安全删除}
+
+\enabstract{All-flash disk array is a new storage architecture. Because of its superior read and
+write performance, smaller I/O latency, is preferred to be used to replace the current array that
+use the mechanical hard drive. SSD will be the mainstream physical storage device used in data center
+in the future. But due to the characteristics of flash disk hardware,after the data stored on it is deleted,
+the data is still existing on its physical page. There maybe caused data leakage. Secure Deletion based
+on Solid-State Disk Array is one of the most active research topics in the storage field,but there hadn't good
+solution yet.
+
+
+For the out-of-place update of SSD may lead to data leakage problems, this study proposes a general solution,
+which raw data and its hash information participate in asymmetric encryption, Galois Group operations, and so on,
+generate redundant encrypted data units,after erasing the hash information on the key disk or erasing a certain
+amount of encrypted data,the original data can no longer be recovered. Therefore, the proposol ensures the security
+of data.
+
+
+On the basis of simulation experiments that be achieved by the research, through verifying the secure deletion and
+other functions. In addition, testing detailly data processing bandwidth, I/O latency, system load, data redundant
+rate and other aspect, the result shows that, besides the simulation achieved the purpose of secure deletion that
+the original data can not be recovered after deleting the hash information of the raw data, the system data
+processing performance is normal and it meets the reliability and availability requirements}
+\enkeywords{SSD,Disk Array,Secure Deletion}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\makeabstract
+\tableofcontents
+\listoffigures
+\listoftables
+\mainmatter
+
+%% 正文
+\include{Chapter1/cp1}
+\include{Chapter2/cp2}
+\include{Chapter3/cp3}
+\include{Chapter4/cp4}
+\include{Chapter5/cp5}
+%\include{Pics/pic}
+
+%% \include{Pics}
+
+\backmatter
+
+%% 致谢
+\begin{ack}
+    本文受国家自然科学基金项目“面向非易失存储器的一站式存储访问模型及技术研究”（61472153）,湖北省自然科学基金项目“基于固态盘和瓦记录磁盘的冷存储系统关键技术研究”（2015CFB192）资助。
+\end{ack}
+
+\bibliography{Ref}
+
+%% 附录部分
+%% \appendix
+%% \begin{publications}
+%% \end{publications}
+
+\end{document}

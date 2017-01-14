@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: main.aux
+The style file: hustthesis.bst
+A level-1 auxiliary file: Chapter1/cp1.aux
+A level-1 auxiliary file: Chapter2/cp2.aux
+A level-1 auxiliary file: Chapter3/cp3.aux
+A level-1 auxiliary file: Chapter4/cp4.aux
+A level-1 auxiliary file: Chapter5/cp5.aux
+Database file #1: Ref.bib
+Warning--empty journal in Perlman2005The
+You've used 27 entries,
+            2464 wiz_defined-function locations,
+            695 strings with 9208 characters,
+and the built_in function-call counts, 5599 in all, are:
+= -- 486
+> -- 328
+< -- 0
++ -- 156
+- -- 76
+* -- 300
+:= -- 884
+add.period$ -- 81
+call.type$ -- 27
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 28
+duplicate$ -- 228
+empty$ -- 550
+format.name$ -- 96
+if$ -- 1295
+int.to.chr$ -- 0
+int.to.str$ -- 27
+missing$ -- 23
+newline$ -- 138
+num.names$ -- 23
+pop$ -- 115
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 165
+stack$ -- 0
+substring$ -- 202
+swap$ -- 17
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 1
+while$ -- 34
+width$ -- 29
+write$ -- 289
+(There was 1 warning)

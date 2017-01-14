@@ -1,0 +1,42 @@
+\documentclass{article}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\begin{document}
+\begin{algorithm}[htb]
+  \caption{Encode origin data with hash info.}
+    \begin{algorithmic}[1]
+	\REQUIRE $secret buffer,m \ge k$
+
+	\STATE $B \gets bytesof per secret word$
+	\STATE $S \gets secret buffer size$
+	\STATE $A \gets aligned secret buffer size$
+	\ENSURE $A \le \{(S+B) \% (B+K), B*(k-1) / (B*k+1)$ 
+
+	\STATE $shareSize \gets (A / B + 1) / k * B$
+	\STATE $aligned buffer \gets secret buffer$
+	\STATE $Key \gets Generate Hash with aligned buffer$.
+
+	\FOR{i = 0 to A}
+        \STATE $aligned size constant Array_i \gets i\&0xff$;
+	\ENDFOR
+
+	\STATE erasure coding data $\gets$ Encrypt with aligned size constant Array and hash info.
+	\STATE erasure coding data $\gets$ Galois Group multiply region hash info with value 1 and,step by B,adding by 1.
+	\STATE share buffer $\gets$ erasure coding data
+
+    \FOR{i=0 to m}
+        \FOR{j=0 to k}
+            \STATE $value \gets distribution_{k^2+k*i+j}$;
+            \STATE
+            share buffer $chunk_{k+i} \gets$ Galois Group multiply region,
+            share buffer $chunk_j$ with value ,
+            step by shareSize,adding by 1 $if j \neq 0 else 0$
+        \ENDFOR
+    \ENDFOR
+
+	\RETURN share buffer
+
+\end{algorithmic}
+\end{algorithm}
+\end{document}

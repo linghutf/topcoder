@@ -1,0 +1,31 @@
+\documentclass{ctexart}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\begin{document}
+\begin{algorithm}[htb]
+  \caption{Safe delete data Hash informathons.(Key data)}
+  \begin{algorithmic}[1]
+    \REQUIRE
+    $addr$: address of the NAND flash page;$i$: position of page;$data$: page content
+    \STATE {// 1. write zero to each page}
+    \STATE $data \gets 0$
+    \FOR{$i=0$ to SSD page total size}
+    \STATE write data to page $addr_i$
+    \ENDFOR
+    
+    \STATE // 2. write random bit to each page
+
+    \FOR{$i=0$ to SSD page total size}
+      \STATE write random bit to page $addr_i$
+    \ENDFOR
+
+
+    \STATE // 3. write zero to each page again.
+    \STATE $data \gets 0$
+    \FOR{$i=0$ to SSD page total size}
+    \STATE write data to page $addr_i$;
+    \ENDFOR
+  \end{algorithmic}
+\end{algorithm}
+\end{document}

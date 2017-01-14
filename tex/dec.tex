@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+
+\begin{document}
+\begin{algorithm}[htb]
+    \caption{Decode encrypted data with Key(hash info)}
+  \begin{algorithmic}[1]
+    \REQUIRE{share buffer,kShareID,k}
+
+	\STATE B $\gets$ bytesof per secret word
+	\STATE S $\gets$ secret buffer size
+	\STATE A $\gets$ aligned secret buffer size
+
+      \ENSURE {shareSize \% B = 0 $\vee$ erasure codeing data size $\ge shareSize * k$}
+
+	\FOR{i=0 to k}
+      \FOR{j=0 to k}
+        \STATE $squared matrix_{k*i+j} \gets distribution_{k*kShareID_{i}+j}$
+      \ENDFOR
+    \ENDFOR
+
+	\STATE invert squared matrix
+
+	\FOR{i=0 to k}
+      \FOR{j=0 to k}
+        \STATE value $\gets squared matrix_{k^2+k*i+j}$;
+        \STATE erasure coding data $chunk_i \gets$ Galois Group multiply region  share buffer $chunk_j$ with value ,
+        step by shareSize,adding by 1 $if j \neq 0 else 0$.
+      \ENDFOR
+	\ENDFOR
+
+	\STATE Key $\gets$ Generate Hash with erasure coding data.
+	\STATE Key $\gets$ Galois Group multiply region  erasure coding data with 1 ,step by B,adding by 1.
+	\STATE erasure coding data $\gets$ Encrypt with aligned size constant Array and hash info.
+	\STATE aligned sercet buffer $\gets$ Galois Group multiply region  erasure coding data with 1 ,step by aligned secret size,adding by 1.
+	\STATE erasure coding data $\gets$ Generate Hash with aligned sercet buffer.
+	\STATE secret buffer $\gets$ aligned sercet buffer
+
+	\RETURN secret buffer
+
+  \end{algorithmic}
+\end{algorithm}
+\end{document}

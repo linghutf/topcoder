@@ -22,14 +22,14 @@
 \contentsline {figure}{\numberline {3-5}{\ignorespaces 输出缓存架构设计\relax }}{26}{figure.caption.29}
 \contentsline {figure}{\numberline {3-6}{\ignorespaces 密钥存储结构\relax }}{27}{figure.caption.30}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4-1}{\ignorespaces 数据读取带宽\relax }}{32}{figure.caption.32}
-\contentsline {figure}{\numberline {4-2}{\ignorespaces 数据写入带宽\relax }}{33}{figure.caption.33}
-\contentsline {figure}{\numberline {4-3}{\ignorespaces 系统读取延迟\relax }}{34}{figure.caption.34}
-\contentsline {figure}{\numberline {4-4}{\ignorespaces 系统写入延迟\relax }}{35}{figure.caption.35}
-\contentsline {figure}{\numberline {4-5}{\ignorespaces 系统前端CPU占用\relax }}{36}{figure.caption.36}
-\contentsline {figure}{\numberline {4-6}{\ignorespaces 系统后端CPU占用\relax }}{37}{figure.caption.37}
-\contentsline {figure}{\numberline {4-7}{\ignorespaces 系统前端内存占用\relax }}{38}{figure.caption.38}
-\contentsline {figure}{\numberline {4-8}{\ignorespaces 系统后端内存占用\relax }}{39}{figure.caption.39}
-\contentsline {figure}{\numberline {4-9}{\ignorespaces 数据冗余率测试结果\relax }}{40}{figure.caption.40}
+\contentsline {figure}{\numberline {4-1}{\ignorespaces 数据读取带宽\relax }}{33}{figure.caption.32}
+\contentsline {figure}{\numberline {4-2}{\ignorespaces 数据写入带宽\relax }}{34}{figure.caption.33}
+\contentsline {figure}{\numberline {4-3}{\ignorespaces 系统读取延迟\relax }}{35}{figure.caption.34}
+\contentsline {figure}{\numberline {4-4}{\ignorespaces 系统写入延迟\relax }}{36}{figure.caption.35}
+\contentsline {figure}{\numberline {4-5}{\ignorespaces 系统前端CPU占用\relax }}{37}{figure.caption.36}
+\contentsline {figure}{\numberline {4-6}{\ignorespaces 系统后端CPU占用\relax }}{38}{figure.caption.37}
+\contentsline {figure}{\numberline {4-7}{\ignorespaces 系统前端内存占用\relax }}{39}{figure.caption.38}
+\contentsline {figure}{\numberline {4-8}{\ignorespaces 系统后端内存占用\relax }}{40}{figure.caption.39}
+\contentsline {figure}{\numberline {4-9}{\ignorespaces 数据冗余率测试结果\relax }}{41}{figure.caption.40}
 \addvspace {10\p@ }
 \contentsfinish 

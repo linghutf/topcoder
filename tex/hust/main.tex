@@ -1,6 +1,10 @@
 \documentclass[format=draft,degree=master,language=chinese]{hustthesis}
 \usepackage{algorithmic}
 \usepackage{float}
+%\usepackage{ctexcap}
+
+%% 重定义章编号样式
+%\CTEXsetup[number={\arabic{chapter}}]{chapter}
 
 \stuno{M201572702}
 \schoolcode{10487}
@@ -33,16 +37,16 @@
 \enabstract{All-flash disk array is a new storage architecture. Because of its superior read and
 write performance, smaller I/O latency, is preferred to be used to replace the current array that
 use the mechanical hard drive. SSD will be the mainstream physical storage device used in data center
-in the future. But due to the characteristics of flash disk hardware,after the data stored on it is deleted,
+in the future. But due to the characteristics of flash disk hardware, after the data stored on it is deleted, 
 the data is still existing on its physical page. There maybe caused data leakage. Secure Deletion based
-on Solid-State Disk Array is one of the most active research topics in the storage field,but there hadn't good
+on Solid-State Disk Array is one of the most active research topics in the storage field, but there hadn't good
 solution yet.
 
 
-For the out-of-place update of SSD may lead to data leakage problems, this study proposes a general solution,
-which raw data and its hash information participate in asymmetric encryption, Galois Group operations, and so on,
-generate redundant encrypted data units,after erasing the hash information on the key disk or erasing a certain
-amount of encrypted data,the original data can no longer be recovered. Therefore, the proposol ensures the security
+For the out-of-place update of SSD may lead to data leakage problems, this study proposes a general solution, 
+which raw data and its hash information participate in asymmetric encryption, Galois Group operations, and so on, 
+generate redundant encrypted data units, after erasing the hash information on the key disk or erasing a certain
+amount of encrypted data, the original data can no longer be recovered. Therefore, the proposol ensures the security
 of data.
 
 
@@ -50,8 +54,9 @@ On the basis of simulation experiments that be achieved by the research, through
 other functions. In addition, testing detailly data processing bandwidth, I/O latency, system load, data redundant
 rate and other aspect, the result shows that, besides the simulation achieved the purpose of secure deletion that
 the original data can not be recovered after deleting the hash information of the raw data, the system data
-processing performance is normal and it meets the reliability and availability requirements}
-\enkeywords{SSD,Disk Array,Secure Deletion}
+processing performance is normal and it meets the reliability and availability requirements.
+}
+\enkeywords{SSD, Disk Array, Secure Deletion}
 
 \begin{document}
 
@@ -77,6 +82,10 @@ processing performance is normal and it meets the reliability and availability r
 
 %% 致谢
 \begin{ack}
+    能完成本研究，首先要感谢我的导师曾令仿老师，是您在忙碌中还对我谆谆教导，细心检查科研过程中的错误。您的每一次指导，都让我学习到了很多东西。感谢谭支鹏老师，在这两年的时间里对我的
+关心和帮助，感谢实验室团队里的其他老师和学生，你们为实验室团队辛苦付出着，我们才有这么好的科研环境。感谢刘文国师兄，在我遇到困惑时能够给予我帮助和启发。
+
+
     本文受国家自然科学基金项目“面向非易失存储器的一站式存储访问模型及技术研究”（61472153）,湖北省自然科学基金项目“基于固态盘和瓦记录磁盘的冷存储系统关键技术研究”（2015CFB192）资助。
 \end{ack}
 

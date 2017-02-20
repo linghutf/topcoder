@@ -145,6 +145,13 @@ Reardon J, Basin D, Capkun S.
 \newblock 公共云存储服务数据安全及隐私保护技术综述.
 \newblock 计算机研究与发展, 2014, 51(7):223--223.
 
+\bibitem{Li2014Convergent}
+Li M, Qin C, Lee P~P~C, et~al.
+\newblock Convergent dispersal: toward storage-efficient security in a
+  cloud-of-clouds.
+\newblock in: Proceedings of Usenix Conference on Hot Topics in Storage and
+  File Systems, 2014, 1-1.
+
 \bibitem{Lee2008Secure}
 Lee J, Heo J, Cho Y, et~al.
 \newblock Secure deletion for NAND flash file system.

@@ -22,12 +22,12 @@
 
 
     针对固态盘的异地更新导致数据可能泄露的问题，本研究在全闪存盘阵列的基础上，提出一种通用性的方案，其根据原始数据
-及其哈希信息经过非对称加密、伽罗瓦群运算等步骤，产生冗余加密数据单元。在擦除密钥盘上的哈希信息，或者是
+及其哈希信息经过非对称加密、RS纠删码冗余编码等步骤，产生冗余加密数据单元。在擦除单个盘上的元数据，或者是
 擦除一定数量的加密数据后，其对应的原始数据再也无法恢复出来，从而保证数据的安全。
 
 
     在依据研究方案实现的仿真实验上，通过对仿真系统的安全删除等功能的验证，以及对系统的数据处理带宽、I/O时延、
-系统负载、数据冗余率等方面的详细测试, 结果表明，在擦除了哈希信息等数据后，原始数据无法恢复，达到了安
+系统负载、数据冗余率等方面的详细测试, 结果表明，在擦除了哈希信息等元数据后，原始数据无法恢复，达到了安
 全删除的目的；系统的数据处理等性能表现正常，满足可靠性和可用性的要求。}
   %%删除原始哈希信息后，保证原始数据的安全性的方案.
   %本文主要提出了一种针对全闪存盘的安全删除方法，通过对原始数据及其哈希信息在群域矩阵非对称加密运算后，
@@ -44,7 +44,8 @@ solution yet.
 
 
 For the out-of-place update of SSD may lead to data leakage problems, this study proposes a general solution, 
-which raw data and its hash information participate in asymmetric encryption, Galois Group operations, and so on, 
+which raw data and its hash information participate in asymmetric encryption, RS erasure code
+redundance encoding, and so on, 
 generate redundant encrypted data units, after erasing the hash information on the key disk or erasing a certain
 amount of encrypted data, the original data can no longer be recovered. Therefore, the proposol ensures the security
 of data.

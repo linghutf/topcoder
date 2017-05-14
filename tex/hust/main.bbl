@@ -21,6 +21,11 @@ BCWipe.
   \url{http://www.secure-eraser.com://www.jetico.com/products/personal-privacy/}.
 \newblock Accessed Dec 8, 2016.
 
+\bibitem{Huebner2006Data}
+Huebner E, Bem D, Wee C~K.
+\newblock Data hiding in the NTFS file system.
+\newblock Digital Investigation, 2006, 3(4):211--226.
+
 \bibitem{Yaakobi2012Characterization}
 Yaakobi E, Grupp L, Siegel P~H, et~al.
 \newblock Characterization and error-correcting codes for TLC flash memories.
@@ -33,6 +38,11 @@ Shibata N, Kanda K, Hisada T, et~al.
   Toggle Mode interface.
 \newblock in: Proceedings of Solid-State Circuits Conference Digest of
   Technical Papers (ISSCC), 2012 IEEE International, 2012, 422 - 424.
+
+\bibitem{Schroeder2016Flash}
+Schroeder B, Lagisetty R, Merchant A.
+\newblock Flash Reliability in Production: The Expected and the Unexpected.
+\newblock 2016.
 
 \bibitem{Perlman2005File}
 Perlman R.
@@ -101,15 +111,65 @@ Wang G, Yue F, Liu Q.
 \newblock 云计算环境中的组合文档模型及其访问控制方案.
 \newblock 西安交通大学学报, 2014, 48(2):25--31.
 
-\bibitem{熊金波2014基于属性加密的组合文档安全自毁方案}
-熊金波, 姚志强, 马建峰, et~al.
-\newblock 基于属性加密的组合文档安全自毁方案.
-\newblock 电子学报, 2014, 42(2):366--376.
+\bibitem{Mitra2006Secure}
+Mitra S, Winslett M.
+\newblock Secure deletion from inverted indexes on compliance storage.
+\newblock in: Proceedings of ACM Workshop on Storage Security and
+  Survivability, Storagess 2006, Alexandria, Va, Usa, October, 2006, 67-72.
 
-\bibitem{熊金波2014面向网络内容隐私的基于身份加密的安全自毁方案}
-熊金波, 姚志强, 马建峰, et~al.
-\newblock 面向网络内容隐私的基于身份加密的安全自毁方案.
-\newblock 计算机学报, 2014, 37(1):139--150.
+\bibitem{Castelluccia2011EphPub}
+Castelluccia C, Cristofaro E~D, Francillon A, et~al.
+\newblock EphPub: Toward robust Ephemeral Publishing.
+\newblock in: Proceedings of IEEE International Conference on Network
+  Protocols, 2011, 165-175.
+
+\bibitem{Backes2011X}
+Backes J, Backes M, Dürmuth M, et~al.
+\newblock X-pire! - A digital expiration date for images in social networks.
+\newblock Computer Science, 2011.
+
+\bibitem{Cachin2013Policy}
+Cachin C, Haralambiev K, Hsiao H~C, et~al.
+\newblock Policy-based secure deletion.
+\newblock in: Proceedings of ACM Sigsac Conference on Computer \&
+  Communications Security, 2013, 259-270.
+
+\bibitem{Zhao2015Gracewipe}
+Zhao L, Mannan M.
+\newblock Gracewipe: Secure and Verifiable Deletion under Coercion.
+\newblock in: Proceedings of Network and Distributed System Security Symposium,
+  2015.
+
+\bibitem{Zhang2011CloudVisor}
+Zhang F, Chen J, Chen H, et~al.
+\newblock CloudVisor: retrofitting protection of virtual machines in
+  multi-tenant cloud with nested virtualization.
+\newblock in: Proceedings of ACM Symposium on Operating Systems Principles,
+  2011, 203-216.
+
+\bibitem{张逢喆2011云计算中的数据隐私性保护与自我销毁}
+张逢喆, 陈进, 陈海波, et~al.
+\newblock 云计算中的数据隐私性保护与自我销毁.
+\newblock 计算机研究与发展, 2011, 48(7):1155--1167.
+
+\bibitem{Zeng2013SeDas}
+Zeng L, Chen S, Wei Q, et~al.
+\newblock SeDas: A Self-Destructing Data System Based on Active Storage
+  Framework.
+\newblock IEEE Transactions on Magnetics, 2013, 49(6):2548--2554.
+
+\bibitem{Zeng2015CloudSky}
+Zeng L, Wang Y, Feng D.
+\newblock CloudSky: A Controllable Data Self-Destruction System for Untrusted
+  Cloud Storage Networks.
+\newblock in: Proceedings of Ieee/acm International Symposium on Cluster, Cloud
+  and Grid Computing, 2015, 352-361.
+
+\bibitem{Feng2016Deleting}
+Feng H, Clarke D, Zorzo A.
+\newblock Deleting Secret Data with Public Verifiability.
+\newblock IEEE Transactions on Dependable \& Secure Computing, 2016,
+  13(6):617--629.
 
 \bibitem{Wei2011Reliably}
 Wei M, Grupp L~M, Spada F~E, et~al.
@@ -129,6 +189,12 @@ Diesburg S, Meyers C, Stanovich M, et~al.
 \newblock TrueErase: Per-file secure deletion for the storage data path.
 \newblock in: Proceedings of Computer Security Applications Conference, 2012,
   439-448.
+
+\bibitem{diesburg2016trueerase}
+Diesburg S, Meyers C, Stanovich M, et~al.
+\newblock Trueerase: Leveraging an auxiliary data path for per-file secure
+  deletion.
+\newblock ACM Transactions on Storage (TOS), 2016, 12(4):18.
 
 \bibitem{傅颖勋2013安全云存储系统与关键技术综述}
 傅颖勋, 罗圣美, 舒继武.
@@ -154,7 +220,7 @@ Plank J~S.
 \bibitem{Plank2013Erasure}
 Plank J~S.
 \newblock Erasure codes for storage systems : a brief primer.
-\newblock ;login:: the magazine of USENIX & SAGE, 2013, 38:págs. 44--50.
+\newblock \;login:: the magazine of USENIX \& SAGE, 2013, 38:págs. 44--50.
 
 \bibitem{Li2014Convergent}
 Li M, Qin C, Lee P~P~C, et~al.

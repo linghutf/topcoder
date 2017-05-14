@@ -8,8 +8,7 @@
 
 \stuno{M201572702}
 \schoolcode{10487}
-\title{基于全闪存盘阵的数据安全删除研究}{Research of Secure Deletion based on
-  Solid-State Disk Array}
+\title{基于全闪存盘阵的数据安全删除研究}{Research on Secure Data Deletion of SSD-based Disk Array}
 \author{徐德传}{Dechuan Xu}
 \major{计算机技术}{Computer Technology}
 \supervisor{曾令仿$\hspace{1em}$副教授}{A/Prof. Lingfang Zeng}
@@ -25,14 +24,15 @@
 分块后，数据块和其哈希信息等元数据经过非对称加密，产生的加密数据块再经过RS纠删码冗余编码，产生冗余加密数据单元。在擦除单个盘上的元数据，或者是
 擦除一定数量的冗余加密数据块后，其对应的原始数据再也无法恢复出来，从而保证数据的安全。
 
-
-    在依据研究方案实现的仿真实验上，通过对仿真系统的安全删除等功能的验证，以及对系统的数据处理带宽、I/O时延、
-系统负载、数据冗余率等方面的详细测试, 结果表明，在擦除了哈希信息等元数据后，原始数据无法恢复，达到了安
-全删除的目的；系统的数据处理等性能表现正常，满足可靠性和可用性的要求。}
+    通过仿真实验，验证了本文提出的安全删除方案的有效性：实施安全删除操作后，原始数据无法恢复，达到了安全删除的目的；
+同时，具有安全删除功能的系统，在数据处理等方面的性能下降在可接受范围，且系统的可靠性和可用性得到保证。由于本文选择的
+是删除原始文件的元数据信息来保证数据安全，相比删除加密后数据的方式，对闪存物理单元的磨损更小，有效延长了固态盘使用寿命。}
+    %实验对系统的数据处理带宽、I/O时延、系统负载、数据冗余率等方面的详细测试, 结果表明，在擦除了哈希信息等元数据后，原始数据无法恢复，达到了安
+%全删除的目的；系统的数据处理等性能表现正常，满足可靠性和可用性的要求。}
   %%删除原始哈希信息后，保证原始数据的安全性的方案.
   %本文主要提出了一种针对全闪存盘的安全删除方法，通过对原始数据及其哈希信息在群域矩阵非对称加密运算后，
 %据，在物理意义上擦除原始数据哈希信息，也即是密钥数据，达到数据安全的目的。}
-\zhkeywords{固态盘，阵列，安全删除}
+\zhkeywords{固态盘，阵列，安全删除，可靠性}
 
 \enabstract{All-flash disk array is a new storage architecture. Because of its superior read and
 write performance, smaller I/O latency, is preferred to be used to replace the current array that
@@ -43,7 +43,7 @@ on Solid-State Disk Array is one of the most active research topics in the stora
 solution yet.
 
 
-For the out-of-place update of SSD may lead to data leakage problems, this study proposes a general solution, 
+For the out-of-place update of SSD may lead to data leakage problems, this study proposes a general solution,
 which raw data chunk and its hash information participate in asymmetric encryption, RS erasure code
 redundance encoding, and so on,
 generate redundant encrypted data units, after erasing the meta date like hash information on the key disk or erasing a certain
@@ -51,13 +51,18 @@ amount of encrypted data, the original data can no longer be recovered. Therefor
 of data.
 
 
-On the basis of simulation experiments that be achieved by the research, through verifying the secure deletion and
-other functions. In addition, testing detailly data processing bandwidth, I/O latency, system load, data redundant
-rate and other aspect, the result shows that, besides the simulation achieved the purpose of secure deletion that
-the original data can not be recovered after deleting the hash information of the raw data, the system data
-processing performance is normal and it meets the reliability and availability requirements.
-}
-\enkeywords{SSD, Disk Array, Secure Deletion}
+Through simulation experiments, we verified the effectiveness of secure deletion proposed in this paper, that 
+the original data can not be recovered after deleting the hash information of the raw data, its achieved the purpose 
+of secure deletion. At the same time, the performance in the data processing and other aspects of the system with the secure deletion, 
+is reduced in the acceptable range, And the reliability and availability are guaranteed. Since we choosed the way which delete metadata 
+informations of the original file too ensure data security, compared to the way that delete the encrypted data stored in flash memory, 
+it wears flash memory physical unit more lightly, so extends the life of the solid state disk effectively.}
+%On the basis of simulation experiments that be achieved by the research, through verifying the secure deletion and
+%other functions. In addition, testing detailly data processing bandwidth, I/O latency, system load, data redundant
+%rate and other aspect, the result shows that, besides the simulation achieved the purpose of secure deletion that
+%the original data can not be recovered after deleting the hash information of the raw data, the system data
+%processing performance is normal and it meets the reliability and availability requirements.}
+\enkeywords{SSD, Disk Array, Secure Deletion, Reliability}
 
 \begin{document}
 
@@ -83,18 +88,26 @@ processing performance is normal and it meets the reliability and availability r
 
 %% 致谢
 \begin{ack}
-    能完成本研究，首先要感谢我的导师曾令仿老师，是您在忙碌中还对我谆谆教导，细心检查科研过程中的错误。您的每一次指导，都让我学习到了很多东西。感谢谭支鹏老师，在这两年的时间里对我的
+    在完成本研究的过程中，首先要感谢我的导师曾令仿老师，是您在忙碌中还对我谆谆教导，细心检查科研过程中的错误。您的每一次指导，都让我学习到了很多东西。感谢谭支鹏老师，在这两年的时间里对我的
 关心和帮助，感谢实验室团队里的其他老师和学生，你们为实验室团队辛苦付出着，我们才有这么好的科研环境。感谢刘文国师兄，在我遇到困惑时能够给予我帮助和启发。
-
-
-    本文受国家自然科学基金项目“面向非易失存储器的一站式存储访问模型及技术研究”（61472153）,湖北省自然科学基金项目“基于固态盘和瓦记录磁盘的冷存储系统关键技术研究”（2015CFB192）资助。
 \end{ack}
 
 \bibliography{Ref}
 
 %% 附录部分
-%% \appendix
-%% \begin{publications}
-%% \end{publications}
+%\appendix
+%\begin{publications}
+%\end{publications}
+
+\appendix
+\renewcommand{\thechapter}{\arabic{chapter}}
+\chapter{硕士研究生期间参与的项目}
+%\appendix
+%\appendixpage
+%\addcontentsline{toc}{section}{硕士研究生期间参与的项目}\markboth{APPENDICES}{}
+    [1] 国家自然科学基金项目，“面向非易失存储器的一站式存储访问模型及技术研究”（61472153）。
+
+
+    [2] 湖北省自然科学基金项目，“基于固态盘和瓦记录磁盘的冷存储系统关键技术研究”（2015CFB192）。
 
 \end{document}

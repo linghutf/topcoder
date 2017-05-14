@@ -3,51 +3,56 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: main.aux
 The style file: hustthesis.bst
 A level-1 auxiliary file: Chapter1/cp1.aux
+White space in argument---line 27 of file Chapter1/cp1.aux
+ : \citation{熊金波2014云计算环境中的组合文档模型及其访问控制方案,熊金波2014基于属性加密
+ :                                                                                                                        的组合文档安全自毁方案,熊金波2014面向网络内容隐私的基于身份加密的安全自毁方案}
+I'm skipping whatever remains of this command
 A level-1 auxiliary file: Chapter2/cp2.aux
 A level-1 auxiliary file: Chapter3/cp3.aux
 A level-1 auxiliary file: Chapter4/cp4.aux
 A level-1 auxiliary file: Chapter5/cp5.aux
 Database file #1: Ref.bib
+Warning--empty journal in Schroeder2016Flash
 Warning--empty journal in Perlman2005The
-You've used 30 entries,
+You've used 41 entries,
             2464 wiz_defined-function locations,
-            716 strings with 9748 characters,
-and the built_in function-call counts, 6265 in all, are:
-= -- 549
-> -- 353
+            785 strings with 11973 characters,
+and the built_in function-call counts, 8571 in all, are:
+= -- 746
+> -- 508
 < -- 0
-+ -- 168
-- -- 82
-* -- 341
-:= -- 990
-add.period$ -- 90
-call.type$ -- 30
++ -- 240
+- -- 118
+* -- 462
+:= -- 1364
+add.period$ -- 123
+call.type$ -- 41
 change.case$ -- 0
 chr.to.int$ -- 0
-cite$ -- 31
-duplicate$ -- 253
-empty$ -- 618
-format.name$ -- 103
-if$ -- 1447
+cite$ -- 43
+duplicate$ -- 350
+empty$ -- 826
+format.name$ -- 150
+if$ -- 1973
 int.to.chr$ -- 0
-int.to.str$ -- 30
-missing$ -- 26
-newline$ -- 153
-num.names$ -- 26
-pop$ -- 121
+int.to.str$ -- 41
+missing$ -- 37
+newline$ -- 208
+num.names$ -- 37
+pop$ -- 171
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 179
+skip$ -- 249
 stack$ -- 0
-substring$ -- 262
-swap$ -- 18
+substring$ -- 322
+swap$ -- 24
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 1
-while$ -- 39
-width$ -- 32
-write$ -- 322
-(There was 1 warning)
+warning$ -- 2
+while$ -- 53
+width$ -- 43
+write$ -- 439
+(There was 1 error message)

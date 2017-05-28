@@ -1,4 +1,4 @@
-\documentclass[format=draft,degree=master,language=chinese]{hustthesis}
+\documentclass[format=draft,degree=master,language=chinese]{hustthesis} %format=final
 \usepackage{algorithmic}
 \usepackage{float}
 %\usepackage{ctexcap}
@@ -12,7 +12,7 @@
 \author{徐德传}{Dechuan Xu}
 \major{计算机技术}{Computer Technology}
 \supervisor{曾令仿$\hspace{1em}$副教授}{A/Prof. Lingfang Zeng}
-\date{2017}{5}{27}
+\date{2017}{5}{23}
 
 \zhabstract{
     全闪存盘阵是一种全新的存储架构，由于其读写性能优越，I/O时延小，是用于取代目前阵列使用的机械硬盘的首选，
@@ -46,16 +46,16 @@ solution yet.
 For the out-of-place update of SSD may lead to data leakage problems, this study proposes a general solution,
 which raw data chunk and its hash information participate in asymmetric encryption, RS erasure code
 redundance encoding, and so on,
-generate redundant encrypted data units, after erasing the meta date like hash information on the key disk or erasing a certain
+generate redundant encrypted data units, after erasing the metadata like hash information on the key disk or erasing a certain
 amount of encrypted data, the original data can no longer be recovered. Therefore, the proposol ensures the security
 of data.
 
 
-Through simulation experiments, we verified the effectiveness of secure deletion proposed in this paper, that 
+Through simulation experiments, we verified the effectiveness of secure deletion proposed in the dissertation, that 
 the original data can not be recovered after deleting the hash information of the raw data, its achieved the purpose 
 of secure deletion. At the same time, the performance in the data processing and other aspects of the system with the secure deletion, 
 is reduced in the acceptable range, And the reliability and availability are guaranteed. Since we choosed the way which delete metadata 
-informations of the original file too ensure data security, compared to the way that delete the encrypted data stored in flash memory, 
+informations of the original file to ensure data security, compared to the way that delete the encrypted data stored in flash memory, 
 it wears flash memory physical unit more lightly, so extends the life of the solid state disk effectively.}
 %On the basis of simulation experiments that be achieved by the research, through verifying the secure deletion and
 %other functions. In addition, testing detailly data processing bandwidth, I/O latency, system load, data redundant
@@ -88,8 +88,16 @@ it wears flash memory physical unit more lightly, so extends the life of the sol
 
 %% 致谢
 \begin{ack}
-    在完成本研究的过程中，首先要感谢我的导师曾令仿老师，是您在忙碌中还对我谆谆教导，细心检查科研过程中的错误。您的每一次指导，都让我学习到了很多东西。感谢谭支鹏老师，在这两年的时间里对我的
-关心和帮助，感谢实验室团队里的其他老师和学生，你们为实验室团队辛苦付出着，我们才有这么好的科研环境。感谢刘文国师兄，在我遇到困惑时能够给予我帮助和启发。
+时光荏苒，两年时间很快就要过去了，回首这两年的研究生学习之路，有许多值得纪念的时刻。
+
+
+在完成本研究的过程中，首先要感谢我的导师曾令仿老师，是您在忙碌中还对我谆谆教导，细心检查科研过程中的错误。您的每一次指导，都让我学习到了很多东西。感谢谭支鹏老师，在这两年的时间里对我的关心和帮助，感谢实验室团队里的其他老师和学生，你们为实验室团队地辛苦付出，我们才有这么好的科研环境。感谢刘文国师兄，在我遇到困惑时能够给予我帮助和启发。
+
+
+感谢郭涛、郑特龙、涂盛霞，有你们在学习和科研生活上的指导，使我避免走很多弯路；你们给课题组带来了良好的学习氛围，使后来者能够很快适应实验室的环境。
+
+
+两年之间经历了很多，感谢华中科技大学，“明德厚学，求实创新”的校训一直铭记在我心中，还有那林间小道的朗朗读书声，安静的东九湖晚间散步。
 \end{ack}
 
 \bibliography{Ref}

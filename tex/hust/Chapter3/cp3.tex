@@ -13,7 +13,7 @@
 	\item 仿真测试不同安全级别下，本方案在带宽、I/O时延、系统负载、数据冗余率等维度的性能表现，验证本方案是否可行、可靠。
 	\item 通过较容易实现的仿真环境来进行测试，确保本方案针对所有固态盘阵都具有可用性。
 \end{itemize}
-\section{实验环境}
+\section{仿真平台}
 元数据的存储应该使用如本方案所设计的那种容量很小的闪存盘，比如SDSASFK-016GB这类产品，
 但由于元数据数量很少，以及环境的限制，最终使用的密钥盘的型号与数据盘一致。仿真实验环境硬件配置如\autoref{tab:2}所示。
 \begin{table}[H]
@@ -33,16 +33,16 @@
 本次仿真实验使用了4块SSD组成的阵列，然后分为4个独立存储区域作为冗余加密数据的存放点。一块单SSD盘作为密钥存储盘。数据块信息虽加密块信息分散存储在数据盘阵上。整体测试流程如\autoref{fig:15}所示。
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=4in]{Pics/test-pr.pdf}
+	\includegraphics[width=4in,height=2.5in]{Pics/test-pr.pdf}
 	\caption{测试流程}
 	\label{fig:15}
 \end{figure}
 \begin{enumerate}
-	\item 从1MB到1024MB大小的原始数据依次输入仿真系统中
-	\item 记录从读取到第一块数据并被冗余加密编码，然后分发到阵列的过程中每个环节所消耗的时间，生成数据的大小以及系统运行状态等相关数据
-	\item 记录加密数据读取到被加密模块解码、解密，最终还原为原始数据的各个环节的时间、状态等数据
-	\item 使用经过验证的安全删除软件将存储在密钥盘的元数据擦除，尝试还原原始文件，验证安全删除功能
-	\item 统计仿真系统测试的数据，分析得到功能测试和性能测试的结果
+	\item 从1MB开始增大的原始随机数据依次输入仿真系统中。
+	\item 记录从读取到第一块数据并被冗余加密编码，然后分发到阵列的过程中每个环节所消耗的时间，生成数据的大小以及系统运行状态等相关数据。
+	\item 记录加密数据读取到被加密模块解码、解密，最终还原为原始数据的各个环节的时间、状态等数据。
+	\item 使用经过验证的安全删除软件将存储在密钥盘的元数据擦除，尝试还原原始文件，验证安全删除功能。
+	\item 统计仿真系统测试的数据，分析得到功能测试和性能测试的结果。
 \end{enumerate}
 仿真环境结构如\autoref{fig:16}所示。
 \begin{figure}[htb]
@@ -56,13 +56,13 @@
 数据结果部分，编码和解码的逻辑处理单元都有两个分别处理输入和输出的数据缓存中心，而这两个缓存中心的数据结构都是以线程安全的循环队列为基础，因此，设计一个多线程高效的循环队列成为了提高数据缓存效率的关键。\autoref{fig:17}和\autoref{fig:18}分别代表了编码输入缓存和输出缓存。
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{Pics/input-buf.pdf}
+	\includegraphics[width=1\textwidth,height=4in]{Pics/input-buf.pdf}
 	\caption{输入缓存数据结构设计}
 	\label{fig:17}
 \end{figure}
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=1\textwidth]{Pics/output-buf.pdf}
+	\includegraphics[width=1\textwidth,height=4in]{Pics/output-buf.pdf}
 	\caption{输出缓存数据结构设计}
 	\label{fig:18}
 \end{figure}
@@ -82,14 +82,14 @@
 同时在解码时，由于编码算法的特性，只需要读取k份数据即可将原始数据还原出来，具体到本方案中，相比编码需要传输四份数据单元，解码的时候只要读取其中任意三份数据，有效的节省了数据传输的带宽，也减少了等待数据缓存的时间，系统处理性能自然就提升上去了。整体流程架构如\autoref{fig:19}所示。
 \begin{figure}
 	\centering
-	\includegraphics[width=1\textwidth]{Pics/parallel-read.pdf}
+	\includegraphics[width=4.8in,height=3in]{Pics/parallel-read.pdf}
 	\caption{输出缓存架构设计}
 	\label{fig:19}
 \end{figure}
 另外一个改进是，每次传输数据时，系统都会记录下当前各个数据盘的状态，依据这个状态在那些综合性能比较好的数据盘上优先读取数据，这样带来的一个好处是，系统的容错性大大提升。以测试的4个盘为例，假使有1个盘损坏，也不影响数据读取还原，在比测试规模大很多的环境下，因为数据盘的损坏可能性比较明显，这种容错性带来的优势更加明显，数据的完整性也得到了保证。同时，系统选择那些性能较好的数据盘读取数据，也有效地避免了因为单盘影响其他所有数据盘读取性能的问题。
 \subsubsection{元数据存储策略}
 由于环境、操作系统等问题造成的不可抗力，都可能使得这套系统崩溃，然而用于加解密的初始向量是系统随机生成的，此时仍存在于内存中，就会因为系统崩溃而丢失，原始的数据无法再通过系统解密然后被恢复出来，造成了数据丢失。现有的设计对这一问题的解决方法是，在每次处理完数据加密后，密钥模块负责将文件的元数据信息和初始向量存储到单独的密钥盘，设计的密钥存储结构如\autoref{fig:20}所示。
-\begin{figure}[H]
+\begin{figure}[htb]
 	\centering
 	\includegraphics[width=1\textwidth]{Pics/keystore.pdf}
 	\caption{密钥存储结构}
@@ -97,70 +97,75 @@
 \end{figure}
 这样，在系统重启后，对于存储过的文件信息，系统会优先在密钥盘中查找文件元数据信息，如果是读取还原数据，直接使用存储的元数据信息，对于重新存储请求，只需要覆盖掉原来的元数据即可。
 \subsubsection{加密算法实现}
- \begin{algorithm}[H]
- 	\caption{Encode origin data with hash info.}
+ \begin{algorithm}[htb]
+     \caption{结合元数据信息编码原始数据}
  	\label{alg:2}
  	\begin{algorithmic}
- 		\REQUIRE $secret buffer,m \ge k$
- 		\STATE $B \gets bytesof per secret word$
- 		\STATE $S \gets secret buffer size$
- 		\STATE $A \gets aligned secret buffer size$
- 		\ENSURE $A \le min\{(S+B) \% (B+K), B*(k-1) / (B*k+1)\}$ 
- 		\STATE $shareSize \gets (A / B + 1) / k * B$
- 		\STATE $aligned buffer \gets secret buffer$
- 		\STATE $Key \gets Generate Hash with aligned buffer$.
+ 		\REQUIRE $secret\ buffer$,$m \ge k$
+        \STATE B $\gets$ 加密字长(bytes of per secret word)
+        \STATE S $\gets$ 加密后数据单元长度(secret buffer size)
+        \STATE A $\gets$ 对齐后加密数据单元长度(aligned secret buffer size)
+ 		\ENSURE $A \le min\{(S+B) \% (B+K), B*(k-1) / (B*k+1)\}$
+        \STATE 加密后数据大小(shareSize) $\gets$ (A / B + 1) / k * B
+        \STATE 对齐加密后数据(aligned buffer) $\gets$ 加密数据(secret buffer)
+        \STATE 元数据(metadata) $\gets$ 从对齐加密数据生成哈希信息(Generate Hash with aligned buffer)
  		\FOR{i = 0 to A}
- 		\STATE $aligned size constant Array_i \gets i\&0xff$;
+        \STATE 数据对齐常量数组$Array_i$(aligned size constant $Array_i$) $\gets$ i\&0xff
  		\ENDFOR
- 		\STATE erasure coding data $\gets$ Encrypt with aligned size constant Array and hash info.
- 		\STATE erasure coding data $\gets$ Galois Group multiply region hash info with value 1 and,step by B,adding by 1.
- 		\STATE share buffer $\gets$ erasure coding data
+        \STATE 原始数据单元、元数据、随机向量、常量数组数据非对称加密，生成初始加密数据%\STATE 编码数据(erasure coding data) $\gets$ 原始数据单元、对齐常量数组、元数据非对称加密(Encrypt with aligned size constant Array and hash info)
+        \STATE 初始化柯西矩阵，与元数据再进行伽罗瓦群域运算，进行冗余编码(RS编码)，产生编码数据%\STATE 编码数据(erasure coding data) $\gets$ 初始化柯西矩阵，与元数据再进行伽罗瓦群域运算(Galois Group multiply region hash info with value 1 and,step by B,adding by 1)
+        \STATE 由编码数据得到最终的加密数据%\STATE 加密数据(share buffer) $\gets$ 编码数据(erasure coding data)
  		\FOR{i=0 to m}
  		\FOR{j=0 to k}
- 		\STATE $value \gets distribution_{k^2+k*i+j}$;
+ 		\STATE $value$ $\gets$ $distributionMatrix_{k^2+k*i+j}$
  		\STATE
- 		share buffer $chunk_{k+i} \gets$ Galois Group multiply region,
- 		share buffer $chunk_j$ with value ,
- 		step by shareSize,adding by 1 $if j \neq 0 else 0$
+        对每个shareSize大小的编码数据，采取如下运算:
+        加密数据块(share buffer)$chunk_i$ $\gets$ $value$与$chunk_j$群域乘法运算%(Galois Group multiply region,
+ 		%share buffer $chunk_j$ with $value$ ,step by shareSize,adding by 1 $if$ $j$ \neq 0 $else$ 0
  		\ENDFOR
  		\ENDFOR
- 		\RETURN share buffer
+        \RETURN 最终加密数据(share buffer)
  	\end{algorithmic}
  \end{algorithm}
 加密算法\autoref{alg:2}中，关键的操作主要有，首先根据对齐的原始数据块生成它的哈希值，作为该数据块加密的密钥，使用常向量constant array加密并且群运算之后得到初始的加密数据块，之后就按照每个冗余数据单元的大小从前往后依次群运算得到每个加密的数据块，后面的加密单元依赖前面已生成的加密单元。
 \subsubsection{解密算法实现}
-\begin{algorithm}[H]
-	\caption{Decode encrypted data with Key(hash info)}
+\begin{algorithm}[htb]
+    \caption{利用元数据信息解码数据}%Decode encrypted data with Key(hash info)}
 	\label{alg:3}
 	\begin{algorithmic}
 		\REQUIRE{share buffer,kShareID,k}
-		\STATE B $\gets$ bytesof per secret word
-		\STATE S $\gets$ secret buffer size
-		\STATE A $\gets$ aligned secret buffer size
-		\ENSURE {shareSize \% B = 0 $\vee$ erasure codeing data size $\ge shareSize * k$}
+        \STATE B $\gets$ 加密字长(bytes of per secret word)
+        \STATE S $\gets$ 加密后数据单元长度(secret buffer size)
+        \STATE A $\gets$ 对齐后加密数据单元长度(aligned secret buffer size)
+		\ENSURE $shareSize$ \% B = 0 $\vee$ erasure codeing data size $\ge$ $shareSize * k$
 		\FOR{i=0 to k}
 		\FOR{j=0 to k}
-		\STATE $squared matrix_{k*i+j} \gets distribution_{k*kShareID_{i}+j}$
+		\STATE $square matrix_{k*i+j} \gets distribution_{k*kShareID_{i}+j}$
 		\ENDFOR
 		\ENDFOR
-		\STATE invert squared matrix
+		\STATE 转置矩阵squareMatrix %invert square matrix
 		\FOR{i=0 to k}
 		\FOR{j=0 to k}
-		\STATE value $\gets squared matrix_{k^2+k*i+j}$;
-		\STATE erasure coding data $chunk_i \gets$ Galois Group multiply region  share buffer $chunk_j$ with value ,
-		step by shareSize,adding by 1 $if j \neq 0 else 0$.
+		\STATE $value$ $\gets$ $squareMatrix_{k^2+k*i+j}$
+ 		\STATE
+        对每个shareSize大小的编码数据，采取如下运算:
+        加密数据块(share buffer)$chunk_i$ $\gets$ $value$与$chunk_j$群域乘法运算
+		%\STATE erasure coding data $chunk_i$ $\gets$ Galois Group multiply region  share buffer $chunk_j$ with value ,
+		%step by shareSize,adding by 1 $if j \neq 0 else 0$.
 		\ENDFOR
 		\ENDFOR
-		\STATE Key $\gets$ Generate Hash with erasure coding data.
-		\STATE Key $\gets$ Galois Group multiply region  erasure coding data with 1 ,step by B,adding by 1.
-		\STATE erasure coding data $\gets$ Encrypt with aligned size constant Array and hash info.
-		\STATE aligned sercet buffer $\gets$ Galois Group multiply region  erasure coding data with 1 ,step by aligned secret size,adding by 1.
-		\STATE erasure coding data $\gets$ Generate Hash with aligned sercet buffer.
-		\STATE secret buffer $\gets$ aligned sercet buffer
-		\RETURN secret buffer
+        \STATE 元数据 $\gets$ 数据的哈希信息(Generate Hash with erasure coding data)
+		%Galois Group multiply region  erasure coding data with 1 ,step by B,adding by 1.
+		%\STATE erasure coding data $\gets$ Encrypt with aligned size constant Array and hash info.
+        \STATE 与元数据再进行伽罗瓦群域运算，进行冗余解码(RS编码)，产生解码数据%\STATE 编码数据(erasure coding data) $\gets$ 初始化柯西矩阵，与元数据再进行伽罗瓦群域运算(Galois Group multiply region hash info with value 1 and,step by B,adding by 1)
+        \STATE 与元数据、对齐常量数组、编码数据参与解密，得到解密数据
+        %\STATE aligned sercet buffer $\gets$ Galois Group multiply region  erasure coding data with 1 ,step by aligned secret size,adding by 1.
+		\STATE %\STATE erasure coding data $\gets$ Generate Hash with aligned sercet buffer.
+		%\STATE secret buffer $\gets$ aligned sercet buffer
+        \RETURN 原始数据(secret buffer)
 	\end{algorithmic}
 \end{algorithm}
-解密算法\autoref{alg:3}中，首先根据分散向量和当前的冗余数据单元运算得到解密矩阵squad matrix，然后逆置，并作为接下来的群运算的乘积因子，从冗余数据单元的每个数据块从前往后依次得到相应的初始加密数据，初始加密数据的末尾信息部分在群运算和解密操作后得到原始数据块的哈希值，使用该哈希值与初始加密数据再次群运算和取哈希操作，就得到了最终的原始数据块。
+解密算法\autoref{alg:3}中，首先根据分散向量和当前的冗余数据单元运算得到解密矩阵square matrix，然后逆置，并作为接下来的群运算的乘积因子，从冗余数据单元的每个数据块从前往后依次得到相应的初始加密数据，初始加密数据的末尾信息部分在群运算和解密操作后得到原始数据块的哈希值，使用该哈希值与初始加密数据再次群运算和取哈希操作，就得到了最终的原始数据块。
 \section{本章小结}
 本章阐述了依据全闪存盘阵数据安全删除的原型系统实现的仿真系统。
 主要分为四个部分，首先介绍了采用仿真实验的目的和仿真环境的系统结构，其次列出了仿真实验的大体步骤，

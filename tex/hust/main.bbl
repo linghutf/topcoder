@@ -1,9 +1,9 @@
 \begin{thebibliography}{10}
 
-\bibitem{ssd-outofplace-and-trim}
-固态硬盘技术解析之垃圾回收和TRIM指令.
-\newblock \url{https://dirtysalt.github.io/ssd-gc-and-trim.html}.
-\newblock Accessed Dec 8, 2016.
+\bibitem{秦亦2014固态盘可用性增强算法研究}
+秦亦.
+\newblock 固态盘可用性增强算法研究: [PhD Dissertation].
+\newblock 华中科技大学, 2014.
 
 \bibitem{safe-erase}
 O\&O Software GmbH. O\&O SafeErase 7.
@@ -111,6 +111,16 @@ Wang G, Yue F, Liu Q.
 \newblock 云计算环境中的组合文档模型及其访问控制方案.
 \newblock 西安交通大学学报, 2014, 48(2):25--31.
 
+\bibitem{熊金波2014基于属性加密的组合文档安全自毁方案}
+熊金波, 姚志强, 马建峰, et~al.
+\newblock 基于属性加密的组合文档安全自毁方案.
+\newblock 电子学报, 2014, 42(2):366--376.
+
+\bibitem{熊金波2014面向网络内容隐私的基于身份加密的安全自毁方案}
+熊金波, 姚志强, 马建峰, et~al.
+\newblock 面向网络内容隐私的基于身份加密的安全自毁方案.
+\newblock 计算机学报, 2014, 37(1):139--150.
+
 \bibitem{Mitra2006Secure}
 Mitra S, Winslett M.
 \newblock Secure deletion from inverted indexes on compliance storage.
@@ -170,6 +180,19 @@ Feng H, Clarke D, Zorzo A.
 \newblock Deleting Secret Data with Public Verifiability.
 \newblock IEEE Transactions on Dependable \& Secure Computing, 2016,
   13(6):617--629.
+
+\bibitem{Jia2016NFPS}
+Jia S, Xia L, Chen B, et~al.
+\newblock NFPS: Adding Undetectable Secure Deletion to Flash Translation Layer.
+\newblock in: Proceedings of The ACM Asia Conference on Computer and
+  Communications Security, 2016, 305-315.
+
+\bibitem{Margaglia2016The}
+Margaglia F, Yadgar G, Yaakobi E, et~al.
+\newblock The devil is in the details: implementing flash page reuse with WOM
+  codes.
+\newblock in: Proceedings of Usenix Conference on File and Storage
+  Technologies, 2016, 95-109.
 
 \bibitem{Wei2011Reliably}
 Wei M, Grupp L~M, Spada F~E, et~al.
